@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="mobius.css" rel="stylesheet" type="text/css">
+<style>
+
+.body { width: 200px; height: 200px;
+        background-color: beige; border: 1px solid brown;
+        font-size: 150%; padding: 10px;
+        -moz-transform: rotateY(90deg);
+        -webkit-transform: rotateY(90deg);}
+
+</style>
+
+<script type="text/javascript">
+
+
+function mobius(id,aa){
+  var a2=aa % 360;
+  var angle=a2 *Math.PI;
+  angle=angle /180;
+  
+  angle2=angle+0.01;
+  var  d = document.getElementById(id);
+  var  x=Math.round(Math.cos(angle)*200+150);
+  var  y=Math.round(Math.sin(angle)*200+150);
+  var  z=Math.round( Math.sin(angle*2 )*50+150);
+
+  
+  var x2=Math.round((1- Math.cos(angle/2 ))*Math.cos(angle)*100);
+  var y2=Math.round((1- Math.cos(angle/2 ))*Math.sin(angle)*100);
+  var z2=Math.round( Math.sin(angle )* -100);
+  
+  var x3=Math.round((1+ Math.cos(angle2/2 ))*Math.cos(angle2)*100);
+  var y3=Math.round((1+ Math.cos(angle2/2 ))*Math.sin(angle2)*100);
+  var z3=Math.round( Math.sin(angle2 )*100);
+  x2 -= x;
+  y2 -= y;
+  z2 -= z;
+
+  
+  var r2=Math.round(Math.atan2(z2-z,x2-x)*180/ Math.PI  -45);
+  var r=Math.round(Math.atan2(y3-y,x3-x)*180/ Math.PI  -45);
+  r=Math.round(Math.cos(Math.sin(angle))*40);
+  var zm = " -moz-transform:    translate3d("+x;
+  zm+="px,"+y+"px,"+z+"px) rotateZ("+(a2)+"deg) rotateY(30deg);";
+   var zw= "   translate3d("+x+"px,"+y+"px,"+z+"px)  rotateZ("+(a2)+"deg) rotateX("+r+"deg) ";
+  var zma = "   translate3d("+x+"px,"+y+"px,"+z+"px) rotateZ("+(a2)+"deg) rotateX("+r+"deg)  ";
+  try {
+  if (d) {
+   if (d.style.MozTransform != null){
+      d.style.MozTransform=zma;}
+   if (d.style.webkitTransform != null){
+   d.style['-webkit-transform']=zw;}
+  }
+  } catch(ee){};
+  
+}
+
+function setup(x){
+var y=x+2;
+var z="setup("+y+")";
+setTimeout( z ,100);
+mobius("id0",20+x);
+mobius("id1",40+x);
+mobius("id2",60+x);
+mobius("id3",80+x);
+mobius("id4",100+x);
+mobius("id5",120+x);
+mobius("id6",140+x);
+mobius("id7",160+x);
+mobius("id8",180+x);
+mobius("id9",200+x);
+mobius("id10",220+x);
+mobius("id11",240+x);
+mobius("id12",260+x);
+mobius("id13",280+x);
+mobius("id14",300+x);
+mobius("id15",320+x);
+mobius("id16",340+x);
+mobius("id17",360+x);
+}
+
+window.onload = setup(0);
+</script>
+</head>
+
+<body >
+<h1> <img src="html5.png" > Möbius strip</h1>
+<p> Animation of <a href="http://en.wikipedia.org/wiki/M%C3%B6bius_strip"> möbius strip</a> using 3d transform</p>
+<p>  This is working only on <a href="http://www.mozilla.org/en-US/firefox/channel/">Aurora</a> browser (Firefox 11)</p>
+
+
+<div id="mdcontent" style="display:block;">
+  <div id="globA">
+    <div class="glob">
+       <div class="lg0" id="id0"  ><p>&nbsp;</p></div>
+       <div class="lg1" id="id1" ><p>&nbsp;</p></div>
+       <div class="lg2" id="id2" ><p>&nbsp;</p></div>
+       <div class="lg3" id="id3" ><p>&nbsp;</p></div>
+       <div class="lg4" id="id4" ><p>&nbsp;</p></div>
+       <div class="lg5" id="id5" ><p>&nbsp;</p></div>
+       <div class="lg6" id="id6" ><p>&nbsp;</p></div>
+       <div class="lg7" id="id7" ><p>&nbsp;</p></div>
+       <div class="lg8" id="id8" ><p>&nbsp;</p></div>
+       <div class="lg9" id="id9" ><p>&nbsp;</p></div>
+       <div class="lg10" id="id10" ><p>&nbsp;</p></div>
+       <div class="lg11" id="id11" ><p>&nbsp;</p></div>
+       <div class="lg0" id="id12"  ><p>&nbsp;</p></div>
+       <div class="lg1" id="id13" ><p>&nbsp;</p></div>
+       <div class="lg2" id="id14" ><p>&nbsp;</p></div>
+       <div class="lg3" id="id15" ><p>&nbsp;</p></div>
+       <div class="lg4" id="id16" ><p>&nbsp;</p></div>
+       <div class="lg4" id="id17" ><p>&nbsp;</p></div>
+    </div>
+  </div>
+</div>
+
+ <div class="video-js-box">
+    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
+    <video id="example_video_1" class="video-js" width="640" height="264" controls="controls" preload="auto" poster="mobius-clip.png">
+      <source src="mobius-clip.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+      <source src="http://invoicer.pl/mobius-clip.webm" type='video/webm; codecs="vp8, vorbis"' />
+      <source src="http://invoicer.pl/mobius-clip.ogv" type='video/ogg; codecs="theora, vorbis"' />      
+    </video>
+</div>
+
+
+<div style="display:block;float:left;position:fixed;bottom:0;right:0;"> 
+ <a href="http://invoicer.biz"><img src="intro-invoicer.png"></a>
+ <footer><cite>DarekM@emadar.com</cite> </footer>
+
+</div>
+
+</body>
